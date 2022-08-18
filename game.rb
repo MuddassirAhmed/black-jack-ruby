@@ -13,9 +13,9 @@ class Player
   end
 
   def add_card_in_hand(card)
-    card.score = 1 if card.score == 11 && @total > 11
-    @total += card.score
-    @hand << card
+    card.score = 1 if card.score == 11 && total > 11
+    total += card.score
+    hand << card
   end
 
   def intrdouce
@@ -27,37 +27,40 @@ end
 class Card
   attr_accessor :value, :suit, :score
 
-  def initialize(value, suit, score)
+  def initialize(value, suit)
     @value = value
     @suit = suit
-    @score = score
+    @score = get_score(value)
+  end
+
+  def get_score(value)
+    if value.is_a? Integer
+      value
+    elsif value == 'A'
+      11
+    else # J, Q, K
+      10
+    end
   end
 
   def show_card
-    puts "#{@value}-#{@suit} (#{@score})"
+    puts "#{value}-#{suit} (#{score})"
   end
 end
 
 # Deck class
 class Deck
   def initialize
-    @values = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
-    @suits = ['clubs', 'spades', 'hearts', 'diamonds']
+    @values = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'].freeze
+    @suits = %w[clubs spades hearts diamonds]
     @cards = []
     build_deck
   end
 
   def build_deck
     @values.each do |value|
-      if value.is_a? Integer
-        score = value
-      elsif value == 'A'
-        score = 11
-      else # J, Q, K
-        score = 10
-      end
       @suits.each do |suit|
-        @cards << Card.new(value, suit, score)
+        @cards << Card.new(value, suit)
       end
     end
     @cards.shuffle!
