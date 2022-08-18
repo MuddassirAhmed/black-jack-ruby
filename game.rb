@@ -19,7 +19,7 @@ class Player
   end
 
   def intrdouce
-    puts "I am #{@name}, I have $#{@bank_roll} left."
+    puts "I am #{name}, I have $#{bank_roll} left."
   end
 end
 
