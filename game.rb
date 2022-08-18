@@ -30,10 +30,15 @@ class Card
   def initialize(value, suit)
     @value = value
     @suit = suit
-    @score = get_score(value)
+    @score = calculate_score(value)
   end
 
-  def get_score(value)
+  def show_card
+    puts "#{value}-#{suit} (#{score})"
+  end
+
+  private
+  def calculate_score(value)
     if value.is_a? Integer
       value
     elsif value == 'A'
@@ -42,24 +47,21 @@ class Card
       10
     end
   end
-
-  def show_card
-    puts "#{value}-#{suit} (#{score})"
-  end
 end
 
 # Deck class
 class Deck
+  VALUES = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'].freeze
+  SUITS = %w[clubs spades hearts diamonds].freeze
+
   def initialize
-    @values = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'].freeze
-    @suits = %w[clubs spades hearts diamonds]
     @cards = []
     build_deck
   end
 
   def build_deck
-    @values.each do |value|
-      @suits.each do |suit|
+    VALUES.each do |value|
+      SUITS.each do |suit|
         @cards << Card.new(value, suit)
       end
     end
