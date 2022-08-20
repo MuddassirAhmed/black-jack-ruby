@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'class_card'
+require_relative 'card'
 
 # Deck class
 class Deck

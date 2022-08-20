@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'class_player'
-require_relative 'class_deck'
+require_relative 'player'
+require_relative 'deck'
 
 # Game class
 class BlackJack
