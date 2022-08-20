@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'class_black_jack'
+require_relative 'black_jack'
 
 print 'Enter your name: '
 player_name = gets.chomp

@@ -13,14 +13,20 @@ class Player
   end
 
   def add_card_in_hand(card)
-    card.score = 1 if card.score == 11 && total > 11
     @total += card.score
     hand << card
+    hand.each do |c|
+      if c.score == 11 && total > 21
+        c.score = 1
+        @total -= 10
+      end
+    end
   end
 
   def show_hand
     hand.each(&:show_card)
-    puts "score: #{total}"
+    puts "#{name}\'s Score: #{total}"
+    puts
   end
 
   def intrdouce
