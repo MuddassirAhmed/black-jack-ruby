@@ -2,14 +2,26 @@
 
 # player class
 class Player
-  attr_accessor :name, :hand, :bank, :total, :bet
+  attr_accessor :name, :hand, :starting_amount, :bank_roll, :total
 
   def initialize(name, bank_roll)
     @name = name
     @hand = []
+    @starting_amount = bank_roll
     @bank_roll = bank_roll
     @total = 0
-    @bet = 0
+  end
+
+  def is_bet_amount_available?(bet)
+    bet <= bank_roll
+  end
+
+  def won_amount(bet)
+    @bank_roll += bet
+  end
+
+  def lost_amount(bet)
+    @bank_roll -= bet if bet <= bank_roll
   end
 
   def add_card_in_hand(card)
