@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'class_card'
+require_relative 'card'
 
 # Deck class
 class Deck
@@ -9,7 +9,13 @@ class Deck
 
   def initialize
     @cards = []
-    build_deck
+    add_cards
+  end
+
+  def add_cards
+    while @cards.length < 60
+      build_deck
+    end
   end
 
   def build_deck
@@ -25,6 +31,7 @@ class Deck
     random_index = rand(@cards.length)
     card = @cards[random_index]
     @cards.delete_at(random_index)
+    add_cards
     card # returns card
   end
 
