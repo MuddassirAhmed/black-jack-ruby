@@ -16,6 +16,7 @@ class BlackJack
 
   def play_game
     puts("Welcome to the Balck Jack #{@user.name}")
+    @user.intrdouce
     while @user.bank_roll.positive?
 
       puts 'Do you want to deal(d) or cash out(c)?'
@@ -126,6 +127,8 @@ class BlackJack
       @user.lost_amount(@bet)
     end
     puts '-----------------------------------'
+    @computer.clear_hand
+    @user.clear_hand
   end
 end
 

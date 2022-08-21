@@ -41,6 +41,11 @@ class Player
     puts
   end
 
+  def clear_hand
+    hand.clear
+    @total = 0
+  end
+
   def intrdouce
     puts "I am #{name}, I have $#{bank_roll} left."
   end
