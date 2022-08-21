@@ -91,6 +91,7 @@ class BlackJack
 
   def deal_cards_for_computer
     puts "~~~~ #{@computer.name}\'s Turn ~~~~"
+    @computer.show_hand
     while @computer.total < 17
       card = @deck.deal_a_card
       @computer.add_card_in_hand(card)
@@ -126,6 +127,8 @@ class BlackJack
       @computer.won_amount(@bet)
       @user.lost_amount(@bet)
     end
+    puts "Your Bet was $#{@bet}"
+    puts "Now you have $#{@user.bank_roll}"
     puts '-----------------------------------'
     @computer.clear_hand
     @user.clear_hand
