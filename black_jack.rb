@@ -26,7 +26,7 @@ class BlackJack
         puts 'Please enter valid option ("d" or "c")'
         deal_or_cash_out = gets.chomp.downcase
       end
-      
+
       break unless deal_or_cash_out == GAME_VALID_OPTIONS[0]
 
       print 'Enter Bet: $'
@@ -114,8 +114,8 @@ class BlackJack
     elsif @user.total > 21
       puts 'It\'s a BLACK JACK' if @computer.total == 21
       puts "!!! #{@computer.name} WON !!!"
-      @computer.won_amount(@bet)
       @user.lost_amount(@bet)
+      @computer.won_amount(@bet)
     elsif @user.total > @computer.total || @computer.total > 21
       puts 'It\'s a BLACK JACK' if @user.total == 21
       puts "==> #{@user.name} WON <=="
@@ -124,8 +124,8 @@ class BlackJack
     else
       puts 'It\'s a BLACK JACK' if @computer.total == 21
       puts "!!! #{@computer.name} WON !!!"
-      @computer.won_amount(@bet)
       @user.lost_amount(@bet)
+      @computer.won_amount(@bet)
     end
     puts "Your Bet was $#{@bet}"
     puts "Now you have $#{@user.bank_roll}"

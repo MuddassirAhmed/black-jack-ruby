@@ -17,7 +17,7 @@ class Player
   end
 
   def won_amount(bet)
-    @bank_roll += bet * 2
+    @bank_roll += bet
   end
 
   def lost_amount(bet)
